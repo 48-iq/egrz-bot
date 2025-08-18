@@ -1,0 +1,27 @@
+{"properties": [
+  {
+    "name": "bot.username",
+    "type": "java.lang.String",
+    "description": "telegram bot username"
+  },
+  {
+    "name": "bot.token",
+    "type": "java.lang.String",
+    "description": "telegram bot token"
+  },
+  {
+    "name": "bot.threadPoolSize",
+    "type": "java.lang.String",
+    "description": "count of threads in thread pool"
+  },
+  {
+    "name": "bot.apiUri",
+    "type": "java.lang.String",
+    "description": "data api uri"
+  },
+  {
+    "name": "bot.adminChatId",
+    "type": "java.lang.String",
+    "description": "A description for 'bot.adminChatId'"
+  }
+]}
