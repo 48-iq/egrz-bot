@@ -22,6 +22,11 @@
   {
     "name": "bot.adminChatId",
     "type": "java.lang.String",
-    "description": "A description for 'bot.adminChatId'"
+    "description": "A chat with permissions for /test command"
+  },
+  {
+    "name": "bot.cron",
+    "type": "java.lang.String",
+    "description": "time to run task in cron format"
   }
 ]}

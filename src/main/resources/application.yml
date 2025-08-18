@@ -16,3 +16,4 @@ bot:
   threadPoolSize: ${BOT_THREAD_POOL_SIZE:10}
   apiUri: ${BOT_API_URI:https://open-api.egrz.ru/api}
   adminChatId: ${BOT_ADMIN_CHAT_ID}
+  cron: ${BOT_CRON:0 0 5 * * ?}

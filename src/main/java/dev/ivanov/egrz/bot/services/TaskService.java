@@ -7,7 +7,6 @@ import java.util.concurrent.Executors;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +20,6 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-@EnableScheduling
 public class TaskService {
   private final ExecutorService executorService = Executors.newSingleThreadExecutor();
 
@@ -32,7 +30,7 @@ public class TaskService {
   private final SubjectRfService subjectRfService;
   private final TextService textService;
 
-  @Scheduled(cron = "0 0 12 * * ?")
+  @Scheduled(cron = "${bot.cron}")
   public void doTask() {
     executorService.submit(() -> {
       try {
