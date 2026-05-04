@@ -1,0 +1,36 @@
+services:
+  egrz-bot:
+    image: ghcr.io/48-iq/egrz-bot:latest
+    ports:
+      - "8080:8080"
+    environment:
+      BOT_USERNAME: ${EGRZ_BOT_TELEGRAM_USERNAME}
+      BOT_TOKEN: ${EGRZ_BOT_TELEGRAM_TOKEN}
+      DB_URL: jdbc:postgresql://postgres:5432/egrz
+      BOT_ADMIN_CHAT_ID: ${EGRZ_BOT_ADMIN_CHAT_ID}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - default
+
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - default
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h localhost -p 5432 -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+        - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+networks:
+  default:
+    driver: bridge
